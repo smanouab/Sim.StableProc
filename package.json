@@ -1,0 +1,14 @@
+{
+  "name": "stablesde",
+  "private": true,
+  "scripts": {
+    "start": "python3 examples/basic_simulation.py",
+    "test": "python -m pytest -xvs",
+    "build": "python setup.py sdist bdist_wheel",
+    "lint": "flake8 stablesde",
+    "docs": "sphinx-build -b html docs/source docs/build"
+  },
+  "devDependencies": {
+    "flake8": "latest"
+  }
+}
