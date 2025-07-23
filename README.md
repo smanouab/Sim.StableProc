@@ -16,8 +16,8 @@ Prérequis
 Installation
 
 # Cloner le repository
-git clone https://github.com/YOUR-USERNAME/Sim.StableProc---Package-for-Stable-Driven-SDE-Simulation .git
-cd Sim.StableProc---Package-for-Stable-Driven-SDE-Simulation 
+git clone https://github.com/YOUR-USERNAME/Sim.StableProc.git
+cd Sim.StableProc
 # Installer les dépendances
 pip install -r requirements.txt
 
