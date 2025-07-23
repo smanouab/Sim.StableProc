@@ -4,7 +4,7 @@ This forthcoming Python package Sim.StableProc  provides a simuation of weak so
 
  🌋 For more details, see :
  
- # Solym M. Manou-Abi. Weak approximation for stable-driven stochastic differential equations. Preprint 2025
+ ## Solym M. Manou-Abi. Weak approximation for stable-driven stochastic differential equations. Preprint 2025
 
 # 📋 Description
 
