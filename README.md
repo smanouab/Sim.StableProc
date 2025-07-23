@@ -9,8 +9,7 @@ This forthcoming Python package Sim.StableProc  provides a simuation of weak so
 # 📋 Description
 
 
-🚀 Installation Locale (Développeurs)
-Prérequis
+🚀 Local Installation (Developers) and Prerequisites
 
     Python 3.8 ou plus récent
     pip (gestionnaire de packages Python)
@@ -20,7 +19,7 @@ Installation
 # Clone the repository
 git clone https://github.com/YOUR-USERNAME/Sim.StableProc.git
 cd Sim.StableProc
-# Installer les dépendances
+# 📦 Install the dependencies
 pip install -r requirements.txt
 
 # 📦 Module Overview
