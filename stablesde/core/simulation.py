@@ -25,7 +25,6 @@ def simulate_sde(
     theta: float = 0.0,
     lam: float = 0.0,
     rho: float = 1.0,
-    delta: float = 1.0,
     seed: Optional[int] = None
 ) -> Tuple[np.ndarray, np.ndarray]:
     """
@@ -62,8 +61,6 @@ def simulate_sde(
         Parameter for the default drift function. Default is 0.0.
     rho : float, optional
         Parameter for the default diffusion function. Default is 1.0.
-    delta : float, optional
-        Discretization parameter affecting time step: dt = T / N^delta. Default is 1.0.
     seed : int, optional
         Random seed for reproducibility. Default is None.
         
@@ -92,7 +89,7 @@ def simulate_sde(
     Z = simulate_stable_process(N, alpha, beta, sigma, mu, T, delta, seed)
     
     # Time points
-    dt = T / (N ** delta)
+    dt = Delta_t
     t = np.linspace(0, T, N + 1)
     
     # Initialize the process
@@ -123,7 +120,6 @@ def simulate_sde_with_threshold(
     theta: float = 0.0,
     lam: float = 0.0,
     rho: float = 1.0,
-    delta: float = 1.0,
     epsilon_factor: float = 1.0,
     seed: Optional[int] = None
 ) -> Tuple[np.ndarray, np.ndarray]:
@@ -163,8 +159,6 @@ def simulate_sde_with_threshold(
         Parameter for the default drift function. Default is 0.0.
     rho : float, optional
         Parameter for the default diffusion function. Default is 1.0.
-    delta : float, optional
-        Discretization parameter affecting time step: dt = T / N^delta. Default is 1.0.
     epsilon_factor : float, optional
         Factor to adjust the threshold epsilon. Default is 1.0.
     seed : int, optional
@@ -195,7 +189,6 @@ def simulate_sde_with_threshold(
     Z = simulate_stable_process(N, alpha, beta, sigma, mu, T, delta, seed)
     
     # Time points
-    dt = T / (N ** delta)
     t = np.linspace(0, T, N + 1)
     
     # Calculate the threshold epsilon
@@ -210,12 +203,6 @@ def simulate_sde_with_threshold(
         X_prev = X[k - 1]
         dZ = Z[k] - Z[k - 1]
         drift = drift_func(X_prev) * dt
-        
-        # Apply threshold for small jumps
-        if abs(dZ) > epsilon:
-            diffusion = diffusion_func(X_prev) * dZ
-        else:
-            diffusion = 0.0
         
         X[k] = X_prev + drift + diffusion
     
@@ -236,7 +223,6 @@ def simulate_multiple_trajectories(
     theta: float = 0.0,
     lam: float = 0.0,
     rho: float = 1.0,
-    delta: float = 1.0,
     use_threshold: bool = True,
     epsilon_factor: float = 1.0,
     seed: Optional[int] = None
@@ -305,7 +291,6 @@ def simulate_multiple_trajectories(
         diffusion_func = lambda x: rho * (np.abs(x)**(1/alpha))
     
     # Time points
-    dt = T / (N ** delta)
     t = np.linspace(0, T, N + 1)
     
     # Simulate trajectories
