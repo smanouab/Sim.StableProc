@@ -46,7 +46,7 @@ def simulate_stable_process(
     -------
     np.ndarray
         Array of shape (N+1,) containing the simulated stable process values
-        at times t = 0, T/N^delta, 2T/N^delta, ..., T.
+        at times step Delta_t
         
     Notes
     -----
@@ -69,7 +69,7 @@ def simulate_stable_process(
     if delta <= 0:
         raise ValueError("delta must be positive")
         
-    dt = T / (N ** delta)
+    dt = Delta_t
     increments = levy_stable.rvs(
         alpha, beta,
         loc=mu * dt,
@@ -88,7 +88,6 @@ def get_stable_increments(
     sigma: float = 1.0,
     mu: float = 0.0,
     T: float = 1.0,
-    delta: float = 1.0,
     seed: Optional[int] = None
 ) -> Tuple[np.ndarray, float]:
     """
@@ -109,7 +108,7 @@ def get_stable_increments(
     T : float, optional
         Time horizon. Default is 1.0.
     delta : float, optional
-        Discretization parameter affecting time step: dt = T / N^delta. Default is 1.0.
+        Discretization parameter affecting time step: dt = Delta_t. Default is 1.0.
     seed : int, optional
         Random seed for reproducibility. Default is None.
         
@@ -141,7 +140,6 @@ def get_stable_increments(
     if delta <= 0:
         raise ValueError("delta must be positive")
         
-    dt = T / (N ** delta)
     increments = levy_stable.rvs(
         alpha, beta,
         loc=mu * dt,
