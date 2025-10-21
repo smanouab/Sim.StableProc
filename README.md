@@ -1,6 +1,6 @@
 # 🌋 Python-Package-for-Stable-Driven-SDE-Simulation
  
-The package Sim.StableProc  provides a simuation of  strong approximate solution for stable driven stochastiques differential equations. Under suitable conditions that ensure stability of the Euler-Maruyama scheme.
+The forthcoming package Sim.StableProc  provides a simuation of  strong approximate solution for stable driven stochastiques differential equations. Under suitable conditions that ensure stability of the Euler-Maruyama scheme.
 
  🌋 For more details, see :
  
